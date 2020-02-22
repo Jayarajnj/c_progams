@@ -1,0 +1,101 @@
+//program for round_robin
+
+
+
+
+#include <stdio.h>
+
+int main ()
+
+{
+
+int p[20],p_dup[20],f[20],n,t,total=0,flag,i,total1=0,j,k,avg_TAT=0,avg_Waiting=0;
+
+
+printf ("Enter the time Quantum:");
+
+scanf ("%d",&t);
+
+printf ("Enter number of processes:");
+
+scanf ("%d",&n);
+
+printf ("Enter the Burst time of processes:\n");
+
+for (i=0;i<n;i++)  //accepting burst time of processes
+
+scanf ("%d",&p[i]);
+
+for (i=0;i<n;i++)  //duplicating burst time of processes
+p_dup[i]=p[i];
+
+for(i=0;i<s;i++)
+
+{
+ total1=total1+p[i];
+}
+
+if(total1%t==0)
+
+ j=(total1/t);
+
+else
+
+ j=(total1/t)+1;
+
+for (k=0;k<j;k++)
+
+ for(i=0;i<n;i++)
+
+ {
+
+  if (p_dup[i]!=0)
+
+   {
+
+    if(p_dup[i]>t)
+
+     {
+
+      p_dup[i]=p_dup[i]-t;
+
+      total=total+t;
+
+     }
+
+    else
+
+     {
+
+      total=total+p_dup[i];
+
+      p_dup[i]=0;
+
+      f[i]=total;
+
+     }
+
+   }
+
+ }
+
+ printf("process\t\tburst\t\tfinish\t\tTat\n");
+
+for (i=0;i<n;i++)
+
+
+     {
+     
+     printf ("%d\t\t%d\t\t%d\t\t%d\n",i,p[i],f[i],(f[i]-p[i]));
+     }
+for (i=0;i<n;i++)
+     {
+     avg_Waiting=avg_Waiting+f[i];
+     avg_TAT=avg_TAT+(f[i]-p[i]);
+     }
+     
+printf("Average waiting time =%d",avg_Waiting/n);
+printf("Average Turn Around time =%d",avg_Waiting/n);
+
+
+}
